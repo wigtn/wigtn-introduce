@@ -1,25 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import Intro from "@/components/intro";
-import Navigation from "@/components/navigation-new";
-import Hero from "@/components/hero-new";
-import HowItWorks from "@/components/how-it-works-horizontal";
-import Partners from "@/components/partners";
-import Contact from "@/components/contact-new";
-import AnimatedBackground from "@/components/animated-background";
-import About from "@/components/about";
+import {
+  Intro,
+  Navigation,
+  Hero,
+  WhatWeDo,
+  Products,
+  Team,
+  Partners,
+  Contact,
+} from "@/components/sections";
 
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false);
 
   return (
     <main className="relative min-h-screen bg-nero">
-      {/* Persistent animated background */}
-      <div className="fixed inset-0 z-0">
-        <AnimatedBackground />
-      </div>
-
       {/* Intro animation */}
       {!introComplete && <Intro onComplete={() => setIntroComplete(true)} />}
 
@@ -29,8 +26,9 @@ export default function Home() {
         {introComplete && (
           <>
             <Hero />
-            <About />
-            <HowItWorks />
+            <WhatWeDo />
+            <Products />
+            <Team />
             <Partners />
             <Contact />
           </>
