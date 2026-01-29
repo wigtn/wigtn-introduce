@@ -2,13 +2,13 @@ import type { TeamMember } from "@/types";
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Harrison Kim",
+    name: "Hyeongseob Kim",
     role: "Founder & Crew Lead",
     bio: "Building the future of AI-native development. Passionate about making software development accessible to everyone through the power of AI.",
     expertise: ["AI/ML", "Product Strategy", "System Architecture", "Startup"],
     links: {
-      github: "https://github.com/harrisonkim",
-      linkedin: "https://linkedin.com/in/harrisonkim",
+      github: "https://github.com/Hyeongseob91",
+      linkedin: "https://linkedin.com/in/harrison-hyeongseob-kim",
     },
   },
   {
