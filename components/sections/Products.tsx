@@ -1,19 +1,38 @@
-import { CONTENT } from "@/constants";
+"use client";
+
+import { useLanguage } from "@/lib/i18n";
+
+const PRODUCTS = [
+  {
+    id: "wigvu",
+    name: "WIGVU",
+    tagline: "See your ideas come to life",
+    features: ["Instant visual prototyping", "Natural language input", "Export to code"],
+    status: "Coming Soon",
+  },
+  {
+    id: "wigex",
+    name: "WIGEX",
+    tagline: "Execute with precision",
+    features: ["AI-powered code generation", "Production-ready output", "Continuous iteration"],
+    status: "Coming Soon",
+  },
+];
 
 export function Products() {
-  const { label, title, description, items } = CONTENT.products;
+  const { t } = useLanguage();
 
   return (
     <section id="products" className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6 mb-12">
-        <span className="text-sm font-semibold text-violet dark:text-violet-light mb-6 block tracking-wide">{label}</span>
-        <h2 className="text-section text-foreground dark:text-white mb-4">{title}</h2>
-        <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
+        <span className="text-sm font-semibold text-violet dark:text-violet-light mb-6 block tracking-wide">PRODUCTS</span>
+        <h2 className="text-section text-foreground dark:text-white mb-4">Our Apps</h2>
+        <p className="text-lg text-gray-600 dark:text-gray-400">App-based services built with AI-native development.</p>
       </div>
 
       {/* Products with content-width dividers */}
       <div className="max-w-4xl mx-auto px-6">
-        {items.map((product, index) => (
+        {PRODUCTS.map((product, index) => (
           <div
             key={product.id}
             className={index !== 0 ? "border-t border-slate-200 dark:border-gray-800 pt-12 mt-12" : ""}
@@ -40,7 +59,7 @@ export function Products() {
                 </div>
                 <p className="text-violet dark:text-violet-light mb-4">{product.tagline}</p>
                 <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                  {product.description}
+                  {t.products.items[index]}
                 </p>
 
                 {/* Features */}

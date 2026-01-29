@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "@/constants";
+import { LANGUAGES } from "@/constants/translations";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { useLanguage } from "@/lib/i18n";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,17 +53,40 @@ export function Navigation() {
       >
         <nav className="max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className="text-xl font-bold text-foreground dark:text-white hover:text-violet dark:hover:text-violet-light transition-colors"
-            >
-              WIGTN
-            </a>
+            {/* Left: Logo + Language Selector */}
+            <div className="flex items-center gap-4">
+              <a
+                href="#"
+                onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                className="text-xl font-bold text-foreground dark:text-white hover:text-violet dark:hover:text-violet-light transition-colors"
+              >
+                WIGTN
+              </a>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+              {/* Language Selector */}
+              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+                {LANGUAGES.map((lang, index) => (
+                  <span key={lang.code} className="flex items-center">
+                    <button
+                      onClick={() => setLanguage(lang.code)}
+                      className={`transition-colors ${
+                        language === lang.code
+                          ? "text-violet dark:text-violet-light font-medium"
+                          : "hover:text-violet dark:hover:text-violet-light"
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                    {index < LANGUAGES.length - 1 && (
+                      <span className="mx-1 text-gray-300 dark:text-gray-600">|</span>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Desktop Menu */}
+            <div className="hidden md:flex items-center gap-6">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.id}
@@ -74,6 +100,7 @@ export function Navigation() {
                   {item.label}
                 </a>
               ))}
+
               <ThemeToggle />
             </div>
 
@@ -113,6 +140,27 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+
+            {/* Mobile Language Selector */}
+            <div className="flex items-center gap-2 mt-4 text-sm">
+              {LANGUAGES.map((lang, index) => (
+                <span key={lang.code} className="flex items-center">
+                  <button
+                    onClick={() => setLanguage(lang.code)}
+                    className={`transition-colors ${
+                      language === lang.code
+                        ? "text-violet dark:text-violet-light font-medium"
+                        : "text-gray-500 dark:text-gray-400 hover:text-violet dark:hover:text-violet-light"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                  {index < LANGUAGES.length - 1 && (
+                    <span className="mx-2 text-gray-300 dark:text-gray-600">|</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </nav>
         </div>
       )}

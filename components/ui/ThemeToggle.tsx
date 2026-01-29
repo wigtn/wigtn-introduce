@@ -1,22 +1,24 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-1 text-gray-500 hover:text-violet dark:text-gray-400 dark:hover:text-violet-light transition-colors"
-      aria-label={theme === "light" ? "다크 모드로 전환" : "라이트 모드로 전환"}
+      className={`relative w-8 h-4 rounded-full transition-colors duration-[35ms] ${
+        isDark ? "bg-violet" : "bg-gray-300"
+      }`}
+      aria-label={isDark ? "라이트 모드로 전환" : "다크 모드로 전환"}
     >
-      {theme === "light" ? (
-        <Moon className="w-4 h-4" />
-      ) : (
-        <Sun className="w-4 h-4" />
-      )}
+      <span
+        className={`absolute top-0.5 w-3 h-3 bg-white rounded-full shadow-sm transition-transform duration-150 ${
+          isDark ? "translate-x-[18px]" : "translate-x-0.5"
+        }`}
+      />
     </button>
   );
 }

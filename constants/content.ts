@@ -66,16 +66,10 @@ export const CONTENT = {
     description: "Free tools for the developer community.",
     items: [
       {
-        id: "claude-code-plugins",
-        name: "Claude Code Plugins",
+        id: "wigtn-plugins-with-claude-code",
+        name: "WIGTN Plugins with Claude Code",
         description: "A collection of powerful plugins for Claude Code that enhance your AI-assisted development workflow. Includes PRD generator, code review, and more.",
-        repo: "https://github.com/wigtn/claude-code-plugins",
-      },
-      {
-        id: "cursor-plugins",
-        name: "Cursor Plugins",
-        description: "Custom plugins and extensions for Cursor IDE. Boost your productivity with AI-powered coding assistance.",
-        repo: "https://github.com/wigtn/cursor-plugins",
+        repo: "https://github.com/wigtn/wigtn-plugins-with-claude-code",
       },
     ],
   },
