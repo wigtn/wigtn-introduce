@@ -13,11 +13,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: "Jinmo Kim",
-    role: "Tech Lead | Solution Architect",
+    role: "Tech | Solution Architect",
     bio: "Responsible for backend development, DevOps, and overall infrastructure. Focuses on building reliable system architectures and deployment environments to ensure stable service operations, while laying the foundation for AI features to run smoothly in production environments.",
-    expertise: ["Backend", "Infrastructure", "CI/CD", "DevOps"],
+    expertise: ["React", "Next.js", "Nest.js", "Spring Boot", "Docker", "Kubernetes"],
     links: {
       github: "https://github.com/moriroKim",
+      linkedin: "https://www.linkedin.com/in/jinmo-kim-62878533b/",
     },
   },
   {
